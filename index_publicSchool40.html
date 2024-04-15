@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Situated Archives - Public School 40</title>
+        <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+        <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
+        <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+    </head>
+
+    <body>
+        <a-scene vr-mode-ui='enabled: false'
+                 arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
+                 renderer='antialias: true; alpha: true'>
+
+            <!------------------------------------------------------------------>
+
+            <!--object for troubleshooting / testing-->
+            <!--Place a box at a specific gps location: 42.44462792252055, -76.50417131252031-->
+            <a-camera look-controls-enabled='false' 
+                      arjs-device-orientation-controls='smoothingFactor: 0.1'
+                      gps-new-camera='gpsMinDistance: 5'>
+            </a-camera>
+
+
+
+            <a-entity material='color: red'
+                      geometry='primitive: box'
+                      gps-new-entity-place="latitude: 42.44460; longitude: -76.50416"
+                      scale="30 30 30">
+            </a-entity>
+
+              <a-entity material='color: blue'
+look-at="[gps-camera]"
+geometry='primitive: box'
+gps-entity-place="latitude: <42.95257>; longitude: <78.82124>;"
+scale="2 2 2">
+</a-entity>
+
+            <!---------------------------------------------------------->
+
+
+
+            <a-text
+                    material='color: red'
+                    value="This content will always face you."
+                    scale="20 20 20"
+                    position='0 0 0'
+                    gps-entity-place="latitude: <42.95257>; longitude: <78.82124>;"
+                    animation="property: material.opacity; from: 0.8; to: 0.1; loop: true; dir: alternate; dur: 5000"
+                    >
+            </a-text>
+
+
+
+            <a-text
+                    value="This content will always face you."
+                    look-at="[gps-camera]"
+                    scale="2 2 2"
+                    position='15 60 -15'
+                    gps-entity-place="latitude: <42.95257>; longitude: <78.82124>;"
+                    animation="property: material.opacity; from: 0.8; to: 0.1; loop: true; dir: alternate; dur: 5000"
+                    >
+            </a-text>
+
+            <!--Place an image at the following GPS coordinates: 42.44460, -78.84714808465061-->
+            <!--
+<a-image src="#Coles_Entrance"
+gps-new-entity-place="latitude: 42.925262364731836; longitude: -76.50416"
+scale="10 10 10">                
+</a-image>
+-->
+
+
+
+            <!--            Rear GPS: 42.92504188320984, -78.84744693310255-->
+            <!--
+<a-image src="#Coles_Rear"
+gps-new-entity-place="latitude: 42.92504188320984; longitude: -78.84744693310255"
+scale="10 10 10">
+</a-image>
+-->
+        </a-scene>
+    </body>
+</html>
